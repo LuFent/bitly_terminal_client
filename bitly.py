@@ -24,20 +24,15 @@ class Bitly:
         payload = {"long_url": longurl}
         url = "https://api-ssl.bitly.com/v4/shorten"
         response = requests.post(url, headers=self.header, json=payload)
-        if response.ok:
-            shorten = response.json()['link']
-            return shorten
-        else:
-            raise requests.exceptions.HTTPError
+        response.raise_for_status()
+        return response.json()["link"]
 
     def get_clicks(self, shorturl):
 
         url = f"https://api-ssl.bitly.com/v4/bitlinks/{shorturl}/clicks/summary"
         response = requests.get(url, headers=self.header)
-        if response.ok:
-            return response.json()["total_clicks"]
-        else:
-            raise requests.exceptions.HTTPError
+        response.raise_for_status()
+        return response.json()["total_clicks"]
 
 
 def main():
