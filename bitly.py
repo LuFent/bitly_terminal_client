@@ -5,10 +5,9 @@ import requests
 import os
 
 
-def is_bitlink(url):
-    if urlparse(url)[1] == "bit.ly":
-        return True
-    return False
+def is_bitlink(id, headers):
+    url_ = f"https://api-ssl.bitly.com/v4/bitlinks/{id}"
+    return requests.get(url_, headers=headers).ok
 
 
 class Bitly:
