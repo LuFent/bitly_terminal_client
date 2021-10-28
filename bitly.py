@@ -4,6 +4,9 @@ from dotenv import load_dotenv
 import requests
 import os
 
+load_dotenv()
+API_TOKEN = os.getenv("API_TOKEN")
+
 
 def is_bitlink(id, headers):
     url_ = f"https://api-ssl.bitly.com/v4/bitlinks/{id}"
@@ -38,9 +41,8 @@ class Bitly:
 
 
 def main():
-    load_dotenv()
-    api_token = os.getenv("api_token")
-    bitly = Bitly(api_token)
+
+    bitly = Bitly(API_TOKEN)
 
     user_url = input("Enter your URL\n")
 
