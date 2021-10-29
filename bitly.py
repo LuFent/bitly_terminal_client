@@ -6,8 +6,8 @@ import os
 
 
 def is_bitlink(url_id, headers):
-    url_ = f"https://api-ssl.bitly.com/v4/bitlinks/{url_id}"
-    return requests.get(url_, headers=headers).ok
+    url = f"https://api-ssl.bitly.com/v4/bitlinks/{url_id}"
+    return requests.get(url, headers=headers).ok
 
 
 def shorten_link(long_url, header):
