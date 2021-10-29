@@ -27,9 +27,9 @@ def get_clicks(short_url, header):
 
 def main():
     load_dotenv()
-    API_TOKEN = os.getenv("API_TOKEN")
+    BITLY_API_TOKEN = os.getenv("BITLY_API_TOKEN")
 
-    header = {"Authorization": f"Bearer {API_TOKEN}"}
+    header = {"Authorization": f"Bearer {BITLY_API_TOKEN}"}
     user_url = input("Enter your URL\n")
 
     try:
