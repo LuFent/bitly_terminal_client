@@ -33,7 +33,8 @@ def main():
     user_url = input("Enter your URL\n")
 
     try:
-        url_id = f"{urlparse(user_url)[1]}{urlparse(user_url)[2]}"
+        parsed_url = urlparse(user_url)
+        url_id = f"{parsed_url[1]}{parsed_url[2]}"
 
         if is_bitlink(url_id, header):
             print(f"You entered BitLink, count of clicks on it: {get_clicks(url_id, header)}")
