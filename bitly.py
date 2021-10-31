@@ -27,17 +27,17 @@ def get_clicks(short_url, header):
 
 def main():
     load_dotenv()
-    BITLY_API_TOKEN = os.getenv("BITLY_API_TOKEN")
+    bitly_api_token = os.getenv("BITLY_API_TOKEN")
 
-    header = {"Authorization": f"Bearer {BITLY_API_TOKEN}"}
+    header = {"Authorization": f"Bearer {bitly_api_token}"}
     user_url = input("Enter your URL\n")
 
-    try:
-        parsed_url = urlparse(user_url)
-        url_id = f"{parsed_url[1]}{parsed_url[2]}"
+    parsed_url = urlparse(user_url)
+    bitly_url_id = f"{parsed_url[1]}{parsed_url[2]}"
 
-        if is_bitlink(url_id, header):
-            print(f"You entered BitLink, count of clicks on it: {get_clicks(url_id, header)}")
+    try:
+        if is_bitlink(bitly_url_id, header):
+            print(f"You entered BitLink, count of clicks on it: {get_clicks(bitly_url_id, header)}")
         else:
             print(f"Bitlink created: {shorten_link(user_url, header)}")
 
