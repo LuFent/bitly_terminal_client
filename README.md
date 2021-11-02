@@ -2,21 +2,28 @@
 
 Позволяет скоращать ссылки через bitly, и получать количество кликов по уже созданным битлинкам
 
-## Пример 1
+## Как установить
+
+- Установить python3
+- Склонировать репозиторий
+- Перейти в папку с проектом и выполнить команду ``` pip install -r requrements.txt  ```     
+
+&nbsp;
+
+Чтобы использовать, запустите код командой ```python bitly.py <Ваша ссылка>```
+
+## Пример использования 1
 
 ```
-D:\GitHub\terminal_bitly>python bitly.py
-Enter your URL
-https://lufent.github.io/Library/pages/index1.html
+D:\GitHub\terminal_bitly>python bitly.py https://lufent.github.io/Library/pages/index1.html
 url created
 https://bit.ly/3nmOxLx
 ```
-## Пример 2
+
+## Пример использования 2
 
 ```
-D:\GitHub\terminal_bitly>python bitly.py
-Enter your URL
-https://bit.ly/3nmOxLx
+D:\GitHub\terminal_bitly>python bitly.py https://bit.ly/3nmOxLx
 You entered BitLink, count of clicks on it : 4
 ```
 

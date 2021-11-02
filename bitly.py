@@ -2,6 +2,7 @@ from urllib.parse import urlparse
 from dotenv import load_dotenv
 
 import requests
+import argparse
 import os
 
 
@@ -28,9 +29,12 @@ def get_clicks(short_url, header):
 def main():
     load_dotenv()
     bitly_api_token = os.getenv("BITLY_API_TOKEN")
-
     header = {"Authorization": f"Bearer {bitly_api_token}"}
-    user_url = input("Enter your URL\n")
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('user_url', help='url to be shorted / which to get clicks by')
+    args = parser.parse_args()
+    user_url = args.user_url
 
     parsed_url = urlparse(user_url)
     bitly_url_id = f"{parsed_url[1]}{parsed_url[2]}"
