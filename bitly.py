@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import requests
 import argparse
 import os
+import sys
 
 
 def is_bitlink(url_id, headers):
@@ -37,7 +38,11 @@ def main():
     user_url = args.user_url
 
     parsed_url = urlparse(user_url)
-    bitly_url_id = f"{parsed_url[1]}{parsed_url[2]}"
+    bitly_url_id = "".join(parsed_url[1:3])
+
+    if not urlparse(user_url)[0] == "https" or urlparse(user_url)[0] == "http":
+        print("Url without protocol")
+        sys.exit()
 
     try:
         if is_bitlink(bitly_url_id, header):
@@ -45,8 +50,8 @@ def main():
         else:
             print(f"Bitlink created: {shorten_link(user_url, header)}")
 
-    except requests.exceptions.HTTPError:
-        print("Wrong url")
+    except requests.exceptions.HTTPError as err:
+        print("an error occurred: \n" + str(err))
 
 
 if __name__ == "__main__":
