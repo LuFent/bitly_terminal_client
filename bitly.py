@@ -51,7 +51,7 @@ def main():
             print(f"Bitlink created: {shorten_link(user_url, header)}")
 
     except requests.exceptions.HTTPError as err:
-        print("an error occurred: \n" + str(err))
+        print("An error occurred: \n" + str(err))
 
 
 if __name__ == "__main__":
