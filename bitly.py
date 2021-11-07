@@ -12,7 +12,7 @@ def is_bitlink(url_id, headers):
     return requests.get(url, headers=headers).ok
 
 
-def get_bitly_url_id(url):
+def prepare_link(url):
     parsed_url = urlparse(url)
     return parsed_url.netloc + parsed_url.path
 
@@ -49,8 +49,8 @@ def main():
         sys.exit()
 
     try:
-        if is_bitlink(get_bitly_url_id(user_url), header):
-            print(f"You entered BitLink, count of clicks on it: {get_clicks(get_bitly_url_id(user_url), header)}")
+        if is_bitlink(prepare_link(user_url), header):
+            print(f"You entered BitLink, count of clicks on it: {get_clicks(prepare_link(user_url), header)}")
         else:
             print(f"Bitlink created: {shorten_link(user_url, header)}")
 
